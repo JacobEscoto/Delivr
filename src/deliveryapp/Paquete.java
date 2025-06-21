@@ -90,12 +90,6 @@ public class Paquete {
 
     @Override
     public String toString() {
-        return "\nID: " + idPaquete
-                + "\nCategoria: " + categoria
-                + "\nPeso: " + peso + " kg"
-                + "\nDescripcion: " + descripcion
-                + "\nIncluir seguro: " + incluirSeguro
-                + "\nCliente: " + cliente.getNombre() + " - " + cliente.getIdCliente()
-                + "\nCosto Paquete: Lps. " +costoTotal;
+        return "ID: " + idPaquete + " | Categoria: " + categoria + " | Peso: " + peso + "kg | Seguro: " + incluirSeguro + "Cliente: " + cliente.getNombre() + "" + cliente.getApellido();
     }
 }

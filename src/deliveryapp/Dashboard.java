@@ -19,12 +19,15 @@ public class Dashboard extends javax.swing.JFrame {
     public static ArrayList<Paquete> paquetes = new ArrayList();
     public static ArrayList<Pedido> pedidos = new ArrayList();
     public static char[][] mapa = new char[15][15];
+    Metodos methods = new Metodos();
 
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
+        ImageIcon icon = new ImageIcon("src/Images/package.png");
+        setIconImage(icon.getImage());
         SetImageLabel(iconDelivr, "src/Images/deliveryIcon.png");
         SetImageLabel(tipoIconTxt, "src/Images/delivrTextIcon.png");
         this.setLocationRelativeTo(this);
@@ -215,18 +218,25 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_repartidorBtnActionPerformed
 
     private void paquetesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paquetesBtnActionPerformed
-        // TODO add your handling code here:
+        PaqueteScreen screenPack = new PaqueteScreen();
+        screenPack.setSize(766, 488);
+        screenPack.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(screenPack, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_paquetesBtnActionPerformed
 
     private void pedidosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosBtnActionPerformed
-        /*PedidosDashboard dashPedidos = new PedidosDashboard();
-        dashPedidos.setSize(766, 488);
-        dashPedidos.setLocation(0, 0);
+        PedidosScreen screenOrders = new PedidosScreen();
+        screenOrders.setSize(766, 488);
+        screenOrders.setLocation(0, 0);
         
         content.removeAll();
-        content.add(dashPedidos, BorderLayout.CENTER);
+        content.add(screenOrders, BorderLayout.CENTER);
         content.revalidate();
-        content.repaint();*/
+        content.repaint();
     }//GEN-LAST:event_pedidosBtnActionPerformed
 
     /**

@@ -72,4 +72,23 @@ public class Metodos {
         return id;
     }
     
+    public boolean esDouble(String numero) {
+        boolean valido = true;
+        if (numero.isEmpty()) {
+            valido = false;
+        }
+        
+        for (int i = 0; i < numero.length(); i++) {
+            char c = numero.charAt(i);
+            
+            if (c == '.') {
+                valido = true;
+            }else if (c < '0' || c > '9') {
+                valido = false;
+                break;
+            }
+        }
+        return valido;
+    }
+    
 }
