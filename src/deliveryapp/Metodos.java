@@ -96,12 +96,10 @@ public class Metodos {
     }
     
     public double subTotal(double peso) {
-        if (peso <= 10) {
-            return 150;
-        } else if (peso > 10 && peso <= 30) {
-            return 300;
+        if (peso <= 20) {
+            return 100 + (peso * 5);
         } else {
-            return 600;
+            return 150 + (peso - 10) * 15;
         }
     }
     

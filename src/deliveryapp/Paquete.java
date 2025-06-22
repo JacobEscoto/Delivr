@@ -1,5 +1,7 @@
 package deliveryapp;
 
+import java.util.Random;
+
 public class Paquete {
 
     // Atributos
@@ -69,6 +71,38 @@ public class Paquete {
         this.cliente = cliente;
     }
 
+    public double pesoCaja(String categoria) {
+        Random rand = new Random();
+        int largo = 0, ancho = 0, alto = 0;
+        if (categoria.equalsIgnoreCase("ropa")) {
+            largo = rand.nextInt(20, 51);
+            ancho = rand.nextInt(20, 51);
+            alto = rand.nextInt(20, 51);
+        } else if (categoria.equalsIgnoreCase("comida")) {
+            largo = rand.nextInt(20, 41);
+            ancho = rand.nextInt(20, 41);
+            alto = rand.nextInt(20, 41);
+        } else if (categoria.equalsIgnoreCase("Medicina")) {
+            largo = rand.nextInt(10, 16);
+            ancho = rand.nextInt(10, 16);
+            alto = rand.nextInt(10, 16);
+        } else if (categoria.equalsIgnoreCase("Tecnologia")) {
+            largo =  rand.nextInt(30, 81);
+            ancho =  rand.nextInt(30, 81);
+            alto =  rand.nextInt(30, 81);
+        } else if (categoria.equalsIgnoreCase("fragil")) {
+            largo = rand.nextInt(10, 31);
+            ancho = rand.nextInt(10, 3);
+            alto = rand.nextInt(10, 31);
+        }
+        
+        // Calcular peso volumetrico
+        System.out.println(largo);
+        System.out.println(ancho);
+        System.out.println(alto);
+        return (largo * ancho * alto) / 6000;
+    }
+    
     @Override
     public String toString() {
         return "ID: " + idPaquete + " | Categoria: " + categoria + " | Peso: " + peso + "kg | Seguro: " + incluirSeguro + "Cliente: " + cliente.getNombre() + "" + cliente.getApellido();

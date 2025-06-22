@@ -24,7 +24,6 @@ public class ClientScreen extends javax.swing.JPanel {
         listaClientes.setVisible(false);
         totalLbl.setVisible(false);
         delBtn.setVisible(false);
-        updateBtn.setVisible(false);
     }
 
     /**
@@ -54,7 +53,6 @@ public class ClientScreen extends javax.swing.JPanel {
         listaClientes = new javax.swing.JTextArea();
         totalLbl = new javax.swing.JLabel();
         delBtn = new javax.swing.JButton();
-        updateBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(19, 28, 38));
         setMaximumSize(new java.awt.Dimension(766, 488));
@@ -166,17 +164,6 @@ public class ClientScreen extends javax.swing.JPanel {
             }
         });
 
-        updateBtn.setBackground(new java.awt.Color(67, 127, 66));
-        updateBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBtn.setText("Actualizar");
-        updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,8 +206,6 @@ public class ClientScreen extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(totalLbl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(updateBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -260,10 +245,9 @@ public class ClientScreen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(totalLbl)
-                    .addComponent(delBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -284,7 +268,6 @@ public class ClientScreen extends javax.swing.JPanel {
         listaClientes.setVisible(false);
         totalLbl.setVisible(false);
         delBtn.setVisible(false);
-        updateBtn.setVisible(false);
         if (Dashboard.clientes.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay clientes registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -302,7 +285,7 @@ public class ClientScreen extends javax.swing.JPanel {
             }
 
             if (resultado.equals("")) {
-                JOptionPane.showMessageDialog(this, "No se encontraron resultados de tu busqueda", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontraron resultados de tu busqueda", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Resultados encontrados! \n" + resultado, "ENCONTRADO", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -327,7 +310,6 @@ public class ClientScreen extends javax.swing.JPanel {
         listaClientes.setVisible(false);
         totalLbl.setVisible(false);
         delBtn.setVisible(false);
-        updateBtn.setVisible(false);
     }//GEN-LAST:event_addClientActionPerformed
 
     private void listClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listClientsActionPerformed
@@ -346,7 +328,6 @@ public class ClientScreen extends javax.swing.JPanel {
             dirField.setVisible(false);
             registerBtn.setVisible(false);
             delBtn.setVisible(true);
-            updateBtn.setVisible(true);
 
             int total = 0;
             int size = Dashboard.clientes.size();
@@ -442,10 +423,6 @@ public class ClientScreen extends javax.swing.JPanel {
 
     }//GEN-LAST:event_delBtnActionPerformed
 
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClient;
@@ -466,6 +443,5 @@ public class ClientScreen extends javax.swing.JPanel {
     private javax.swing.JTextField telField;
     private javax.swing.JLabel telLbl;
     private javax.swing.JLabel totalLbl;
-    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
