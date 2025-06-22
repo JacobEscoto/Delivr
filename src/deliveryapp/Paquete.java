@@ -9,7 +9,6 @@ public class Paquete {
     private String descripcion;
     private boolean incluirSeguro;
     private Cliente cliente;
-    private double costoTotal;
 
     // Constructor
     public Paquete(String idPaquete, String categoria, double peso, String descripcion, boolean incluirSeguro, Cliente cliente) {
@@ -19,7 +18,6 @@ public class Paquete {
         this.descripcion = descripcion;
         this.incluirSeguro = incluirSeguro;
         this.cliente = cliente;
-        this.costoTotal = calcularCosto(peso, incluirSeguro);
     }
 
     // Getters y Setters
@@ -47,14 +45,6 @@ public class Paquete {
         this.peso = peso;
     }
 
-    public double getCostoTotal() {
-        return costoTotal;
-    }
-
-    public void setCostoTotal(double costoTotal) {
-        this.costoTotal = costoTotal;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -77,15 +67,6 @@ public class Paquete {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    private double calcularCosto(double peso, boolean incluirSeguro) {
-        if(incluirSeguro) {
-            return (2 * peso) + ((peso * 0.15) + (peso * 0.50));
-        } else {
-            
-        }
-        return (2 * peso) + (peso * 0.15);
     }
 
     @Override

@@ -95,4 +95,44 @@ public class Metodos {
         return valido;
     }
     
+    public double subTotal(double peso) {
+        if (peso <= 10) {
+            return 150;
+        } else if (peso > 10 && peso <= 30) {
+            return 300;
+        } else {
+            return 600;
+        }
+    }
+    
+    // Metodo recursivo - Calcular costo total
+    
+    public double costoTotal(double precio, double peso, int edad, boolean incluirSeguro) {
+        double total = precio;
+        
+        if (edad < 65 && peso < 40 && precio < 500) {
+            if (incluirSeguro) {
+                total += 65;
+            }
+            return total;
+        }
+        
+        if (edad >= 65) {
+            total = costoTotal(precio * 0.40, peso, 0, incluirSeguro);
+            return total;
+        }
+        
+        if (peso >= 40) {
+            total = costoTotal(precio * 0.70, 0, edad, incluirSeguro);
+            return total;
+        }
+        
+        if (precio >= 500) {
+            total = costoTotal(precio * 0.80, peso, edad, incluirSeguro);
+            return total;
+        }
+        
+        return total;
+    }
+    
 }

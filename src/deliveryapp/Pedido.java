@@ -4,17 +4,17 @@ public class Pedido {
     
     // Atributos
     private String idPedido;
-    private Cliente cliente;
     private Paquete paquete;
     private Repartidor repartidor;
+    private double total;
     private String estado;
     
     // Constructor
-    public Pedido(String idPedido, Cliente cliente, Paquete paquete, Repartidor repartidor) {
+    public Pedido(String idPedido, Paquete paquete, Repartidor repartidor, double total) {
         this.idPedido = idPedido;
-        this.cliente = cliente;
         this.paquete = paquete;
         this.repartidor = repartidor;
+        this.total = total;
         this.estado = "Pendiente";
     }
     
@@ -25,14 +25,6 @@ public class Pedido {
     
     public void setIdPedido(String idPedido) {
         this.idPedido = idPedido;
-    }
-    
-    public Cliente getCliente() {
-        return cliente;
-    }
-    
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
     
     public Paquete getPaquete() {
@@ -51,6 +43,14 @@ public class Pedido {
         this.repartidor = repartidor;
     }
     
+    public double getTotal() {
+        return total;
+    }
+    
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
     public String getEstado() {
         return estado;
     }
@@ -62,5 +62,10 @@ public class Pedido {
     // Metodos
     public void entregarPedido() {
         this.estado = "En camino";
+    }
+    
+    @Override
+    public String toString() {
+        return "Paquete: " + paquete.getIdPaquete() + " | Repartidor: " + repartidor.getNombre() + "| Estado:" + estado + " | Costo: " + total;
     }
 }

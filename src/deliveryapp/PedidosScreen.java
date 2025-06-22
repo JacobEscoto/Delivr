@@ -5,11 +5,33 @@ import javax.swing.JOptionPane;
 
 public class PedidosScreen extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PedidosScreen
-     */
+    Metodos mt = new Metodos();
+
     public PedidosScreen() {
         initComponents();
+        for (Paquete paquete : Dashboard.paquetes) {
+            packBox.addItem("ID: " + paquete.getIdPaquete() + " | Categoria: " + paquete.getCategoria() + "| Peso: " + paquete.getPeso() + " | Cliente: " + paquete.getCliente().getNombre() + " " + paquete.getCliente().getApellido());
+        }
+        for (Repartidor repartidor : Dashboard.repartidores) {
+            repBox.addItem("Nombre: " + repartidor.getNombre() + " - " + repartidor.getIdRepartidor() + " | Vehiculo: " + repartidor.getVehiculo());
+        }
+        packLbl.setVisible(false);
+        packBox.setVisible(false);
+        repLbl.setVisible(false);
+        repBox.setVisible(false);
+        registerBtn.setVisible(false);
+        coordX.setVisible(false);
+        coordY.setVisible(false);
+        coordXField.setVisible(false);
+        coordYField.setVisible(false);
+        enviarBtn.setVisible(false);
+        scrollPane.setVisible(false);
+        listPedidos.setVisible(false);
+        mapBtn.setVisible(false);
+        pedidoLbl.setVisible(false);
+        pedidoBox.setVisible(false);
+        enviarBtn.setVisible(false);
+
     }
 
     /**
@@ -26,19 +48,20 @@ public class PedidosScreen extends javax.swing.JPanel {
         searchBtn = new javax.swing.JButton();
         listBtn = new javax.swing.JButton();
         mapBtn = new javax.swing.JButton();
-        clientBox = new javax.swing.JComboBox<>();
         packBox = new javax.swing.JComboBox<>();
         repBox = new javax.swing.JComboBox<>();
-        clientLbl = new javax.swing.JLabel();
         packLbl = new javax.swing.JLabel();
         repLbl = new javax.swing.JLabel();
-        registerBtn = new javax.swing.JButton();
+        enviarBtn = new javax.swing.JButton();
         scrollPane = new javax.swing.JScrollPane();
         listPedidos = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        coordX1 = new javax.swing.JTextField();
-        coordX2 = new javax.swing.JTextField();
+        coordX = new javax.swing.JLabel();
+        coordY = new javax.swing.JLabel();
+        coordXField = new javax.swing.JTextField();
+        coordYField = new javax.swing.JTextField();
+        registerBtn = new javax.swing.JButton();
+        pedidoBox = new javax.swing.JComboBox<>();
+        pedidoLbl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(19, 28, 38));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -105,23 +128,50 @@ public class PedidosScreen extends javax.swing.JPanel {
             }
         });
 
-        clientBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        packBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        packBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                packBoxActionPerformed(evt);
+            }
+        });
 
-        packBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        repBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        clientLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        clientLbl.setForeground(new java.awt.Color(255, 255, 255));
-        clientLbl.setText("Cliente");
+        repBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         packLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         packLbl.setForeground(new java.awt.Color(255, 255, 255));
+        packLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         packLbl.setText("Paquete");
 
         repLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         repLbl.setForeground(new java.awt.Color(255, 255, 255));
+        repLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         repLbl.setText("Repartidor");
+
+        enviarBtn.setBackground(new java.awt.Color(31, 114, 193));
+        enviarBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        enviarBtn.setForeground(new java.awt.Color(255, 255, 255));
+        enviarBtn.setText("Entregar");
+        enviarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enviarBtnActionPerformed(evt);
+            }
+        });
+
+        listPedidos.setBackground(new java.awt.Color(19, 28, 38));
+        listPedidos.setColumns(20);
+        listPedidos.setForeground(new java.awt.Color(255, 255, 255));
+        listPedidos.setRows(5);
+        listPedidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ENTREGAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        scrollPane.setViewportView(listPedidos);
+
+        coordX.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        coordX.setForeground(new java.awt.Color(255, 255, 255));
+        coordX.setText("Coordenada X:");
+
+        coordY.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        coordY.setForeground(new java.awt.Color(255, 255, 255));
+        coordY.setText("Coordenada Y:");
 
         registerBtn.setBackground(new java.awt.Color(31, 114, 193));
         registerBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -134,54 +184,26 @@ public class PedidosScreen extends javax.swing.JPanel {
             }
         });
 
-        listPedidos.setBackground(new java.awt.Color(19, 28, 38));
-        listPedidos.setColumns(20);
-        listPedidos.setForeground(new java.awt.Color(255, 255, 255));
-        listPedidos.setRows(5);
-        listPedidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ENTREGAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        scrollPane.setViewportView(listPedidos);
+        pedidoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        pedidoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pedidoBoxActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Coordenada X:");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Coordenada Y:");
+        pedidoLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pedidoLbl.setForeground(new java.awt.Color(255, 255, 255));
+        pedidoLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pedidoLbl.setText("Pedido");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(coordX1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(coordX2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(repLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(clientLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(packLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(packBox, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clientBox, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repBox, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(147, 147, 147)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(scrollPane)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -189,17 +211,39 @@ public class PedidosScreen extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(listBtn)
-                        .addGap(15, 153, Short.MAX_VALUE))))
+                        .addComponent(listBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(packLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(repLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(repBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(packBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(coordX)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coordXField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(coordY)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coordYField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(enviarBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(pedidoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pedidoBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(147, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(registerBtn)
-                        .addGap(321, 321, 321))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(mapBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(registerBtn)
+                        .addGap(334, 334, 334))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,91 +256,234 @@ public class PedidosScreen extends javax.swing.JPanel {
                     .addComponent(listBtn))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clientBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clientLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(packBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(packLbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(repBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(repLbl))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(coordX2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(coordX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pedidoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pedidoLbl))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(coordXField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(coordX)
+                    .addComponent(coordY)
+                    .addComponent(coordYField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enviarBtn))
+                .addGap(18, 18, 18)
                 .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(mapBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        if(Dashboard.clientes.isEmpty() || Dashboard.repartidores.isEmpty() || Dashboard.paquetes.isEmpty()) {
+        if (Dashboard.clientes.isEmpty() || Dashboard.repartidores.isEmpty() || Dashboard.paquetes.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay Cliente/Repartidor/Paquetes registrados todavia", "WARNING", JOptionPane.WARNING_MESSAGE);
         } else {
-            clientLbl.setVisible(true);
             repLbl.setVisible(true);
+            repBox.setVisible(true);
             packLbl.setVisible(true);
+            packBox.setVisible(true);
+            registerBtn.setVisible(true);
         }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void sendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendBtnActionPerformed
-        if(Dashboard.pedidos.isEmpty()) {
+        packLbl.setVisible(false);
+        packBox.setVisible(false);
+        repLbl.setVisible(false);
+        repBox.setVisible(false);
+        registerBtn.setVisible(false);
+        coordX.setVisible(false);
+        coordY.setVisible(false);
+        coordXField.setVisible(false);
+        coordYField.setVisible(false);
+        enviarBtn.setVisible(false);
+        scrollPane.setVisible(false);
+        listPedidos.setVisible(false);
+        mapBtn.setVisible(false);
+        pedidoLbl.setVisible(false);
+        pedidoBox.setVisible(false);
+        enviarBtn.setVisible(false);
+        if (Dashboard.pedidos.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay pedidos registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        } else {
+            for (Pedido pedido: Dashboard.pedidos) {
+                pedidoBox.addItem(pedido.toString());
+            }
+            pedidoLbl.setVisible(true);
+            pedidoBox.setVisible(true);
+            coordX.setVisible(true);
+            coordY.setVisible(true);
+            coordXField.setVisible(true);
+            coordYField.setVisible(true);
+            enviarBtn.setVisible(true);
+            
         }
     }//GEN-LAST:event_sendBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if(Dashboard.pedidos.isEmpty()) {
+        if (Dashboard.pedidos.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay pedidos registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
-        if(Dashboard.pedidos.isEmpty()) {
+        if (Dashboard.pedidos.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay pedidos registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_listBtnActionPerformed
 
     private void mapBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapBtnActionPerformed
         String mapa = "";
+        int x = Integer.parseInt(coordXField.getText());
+       int y = Integer.parseInt(coordYField.getText());
         for (int i = 0; i < Dashboard.mapa.length; i++) {
             for (int j = 0; j < Dashboard.mapa[i].length; j++) {
                 Dashboard.mapa[i][j] = '.';
                 Dashboard.mapa[0][0] = 'R';
-                mapa += " [ "+ Dashboard.mapa[i][j] +" ] ";
+                Dashboard.mapa[x][y] = 'C';
+                mapa += " [ " + Dashboard.mapa[i][j] + " ] ";
             }
             mapa += "\n";
         }
         JOptionPane.showMessageDialog(this, mapa, "MAPA", JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_mapBtnActionPerformed
 
+    private void enviarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarBtnActionPerformed
+        mapBtn.setVisible(true);
+        int x, y;
+        boolean enviado = true;
+        Pedido pedido = null;
+        String coordX = coordXField.getText();
+        String coordY = coordYField.getText();
+        if (coordX.isEmpty() || coordX.equals(" ")) {
+            enviado = false;
+        } else {
+            x = Integer.parseInt(coordX);
+        }
+        if (coordY.isEmpty() || coordY.equals(" ")) {
+            enviado = false;
+        } else {
+            y = Integer.parseInt(coordX);
+        }
+        String entradaPedido = pedidoBox.getSelectedItem().toString();
+        if (entradaPedido.isEmpty() || entradaPedido.equals(" ")) {
+            enviado = false;
+            
+        }
+        String searchIdP = entradaPedido.substring(entradaPedido.indexOf("Paquete: ") + 10, entradaPedido.indexOf(" | Repartidor:"));
+        System.out.println(searchIdP);
+        for (int i = 0; i < Dashboard.pedidos.size(); i++) {
+            pedido = Dashboard.pedidos.get(i);
+            if (pedido.getPaquete().getIdPaquete().equals(searchIdP)) {
+                enviado = true;
+                break;
+            }
+        }
+        if (pedido == null) {
+            JOptionPane.showMessageDialog(this, "No elegiste un pedido para enviar", "WARNING", JOptionPane.WARNING_MESSAGE);
+            enviado = false;
+        }
+        
+        if(!enviado) {
+            JOptionPane.showMessageDialog(this, "No se puede enviar el pedido", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            pedido.entregarPedido();
+            String factura = "----------------------------------- FACTURA -----------------------------------\n--------------------------------------------------------------------------------\nCliente: " + pedido.getPaquete().getCliente().getNombre() + " " +pedido.getPaquete().getCliente().getApellido() +
+                    "\nRepartidor: " + pedido.getRepartidor().getNombre() + " | Vehiculo: " + pedido.getRepartidor().getVehiculo() +
+                    "\nEstado Entrega: " + pedido.getEstado() + "\nTotal: $" + pedido.getTotal() + "\n--------------------------------------------------------------------------------";
+            
+            JOptionPane.showMessageDialog(this, factura, "ENVIADO", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_enviarBtnActionPerformed
+
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        // TODO add your handling code here:
+        boolean registrado = true;
+        Paquete paquete = null;
+        Repartidor repartidor = null;
+        String paqueteSeleccionado = packBox.getSelectedItem().toString();
+        String repSeleccionado = repBox.getSelectedItem().toString();
+        if (paqueteSeleccionado.equals(" ") || paqueteSeleccionado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No seleccionaste un paquete", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            registrado = false;
+            return;
+        } else if (repSeleccionado.equals(" ") || repSeleccionado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No seleccionaste un repartidor", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            registrado = false;
+            return;
+        }
+        String searchPack = paqueteSeleccionado.substring(paqueteSeleccionado.indexOf("ID: ") + 4, paqueteSeleccionado.indexOf("| Categoria") - 1);
+        System.out.println(searchPack);
+        for (int i = 0; i < Dashboard.paquetes.size(); i++) {
+            Paquete registerPack = Dashboard.paquetes.get(i);
+            if (registerPack.getIdPaquete().equals(searchPack)) {
+                paquete = registerPack;
+                registrado = true;
+                break;
+            }
+        }
+        String searchRep = repSeleccionado.substring(repSeleccionado.indexOf("- ") + 2, repSeleccionado.indexOf("| Vehiculo") - 1);
+        System.out.println(searchRep);
+        for (int i = 0; i < Dashboard.repartidores.size(); i++) {
+            Repartidor registerRep = Dashboard.repartidores.get(i);
+            if (registerRep.getIdRepartidor().equals(searchRep)) {
+                repartidor = registerRep;
+                registrado = true;
+                break;
+            }
+        }
+
+        if (paquete == null) {
+            registrado = false;
+            JOptionPane.showMessageDialog(this, "No registraste un paquete (null)", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        } else if (repartidor == null) {
+            registrado = false;
+            JOptionPane.showMessageDialog(this, "No agregaste un repartidor (null)", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+
+        if (!registrado) {
+            JOptionPane.showMessageDialog(this, "No se pudo registrar el pedido", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String idPedido = mt.generarId("");
+            double subTotal = mt.subTotal(paquete.getPeso());
+            double total = mt.costoTotal(subTotal, paquete.getPeso(), paquete.getCliente().getEdad(), paquete.getIncluirSeguro());
+            Pedido pedido = new Pedido(idPedido, paquete, repartidor, total);
+            Dashboard.pedidos.add(pedido);
+            JOptionPane.showMessageDialog(this, "Se registro el pedido con exito", "EXITO", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_registerBtnActionPerformed
+
+    private void packBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_packBoxActionPerformed
+
+    private void pedidoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pedidoBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JComboBox<String> clientBox;
-    private javax.swing.JLabel clientLbl;
-    private javax.swing.JTextField coordX1;
-    private javax.swing.JTextField coordX2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel coordX;
+    private javax.swing.JTextField coordXField;
+    private javax.swing.JLabel coordY;
+    private javax.swing.JTextField coordYField;
+    private javax.swing.JButton enviarBtn;
     private javax.swing.JButton listBtn;
     private javax.swing.JTextArea listPedidos;
     private javax.swing.JButton mapBtn;
     private javax.swing.JComboBox<String> packBox;
     private javax.swing.JLabel packLbl;
+    private javax.swing.JComboBox<String> pedidoBox;
+    private javax.swing.JLabel pedidoLbl;
     private javax.swing.JButton registerBtn;
     private javax.swing.JComboBox<String> repBox;
     private javax.swing.JLabel repLbl;

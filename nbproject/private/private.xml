@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/Metodos.java</file>
-            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/Cliente.java</file>
-            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/Dashboard.java</file>
-            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/Paquete.java</file>
-            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/PaqueteScreen.java</file>
+            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/RepartidorScreen.java</file>
+            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/ClientScreen.java</file>
+            <file>file:/C:/Users/djaco/Downloads/DelivrApp/src/deliveryapp/Repartidor.java</file>
         </group>
     </open-files>
 </project-private>

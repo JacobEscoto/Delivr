@@ -37,6 +37,7 @@ public class RepartidorScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        updateBtn = new javax.swing.JButton();
         delBtn = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         searchBtn = new javax.swing.JButton();
@@ -50,9 +51,25 @@ public class RepartidorScreen extends javax.swing.JPanel {
         nameField = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(19, 28, 38));
+        setMaximumSize(new java.awt.Dimension(766, 488));
+        setMinimumSize(new java.awt.Dimension(766, 488));
+
+        updateBtn.setBackground(new java.awt.Color(67, 127, 66));
+        updateBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Actualizar");
+        updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         delBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/deleteBtn.png"))); // NOI18N
         delBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        delBtn.setMaximumSize(new java.awt.Dimension(28, 28));
+        delBtn.setMinimumSize(new java.awt.Dimension(28, 28));
+        delBtn.setPreferredSize(new java.awt.Dimension(28, 28));
         delBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delBtnActionPerformed(evt);
@@ -142,7 +159,6 @@ public class RepartidorScreen extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(scrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -150,7 +166,11 @@ public class RepartidorScreen extends javax.swing.JPanel {
                             .addGap(32, 32, 32)
                             .addComponent(searchBtn)
                             .addGap(33, 33, 33)
-                            .addComponent(listarBtn))))
+                            .addComponent(listarBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,8 +193,10 @@ public class RepartidorScreen extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(delBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,6 +318,17 @@ public class RepartidorScreen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_delBtnActionPerformed
 
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+       String opcion;
+       do {
+            opcion = JOptionPane.showInputDialog(this, "Ingresa Nombre o ID a actualizar:");
+            for (int i = 0; i < Dashboard.repartidores.size(); i++) {
+               Repartidor repartidor = Dashboard.repartidores.get(i);
+            } 
+           
+       }while (opcion.isEmpty() || opcion.equals(" "));
+    }//GEN-LAST:event_updateBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -307,6 +340,7 @@ public class RepartidorScreen extends javax.swing.JPanel {
     private javax.swing.JButton registerBtn;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JButton searchBtn;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JComboBox<String> vehicleBox;
     private javax.swing.JLabel vehicleLbl;
     // End of variables declaration//GEN-END:variables

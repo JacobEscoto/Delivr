@@ -134,6 +134,7 @@ public class PaqueteScreen extends javax.swing.JPanel {
 
         listaPackArea.setBackground(new java.awt.Color(19, 28, 38));
         listaPackArea.setColumns(20);
+        listaPackArea.setForeground(new java.awt.Color(255, 255, 255));
         listaPackArea.setRows(5);
         listaPackArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PAQUETES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         scrollPane.setViewportView(listaPackArea);
