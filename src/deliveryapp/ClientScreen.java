@@ -265,7 +265,7 @@ public class ClientScreen extends javax.swing.JPanel {
         listaClientes.setVisible(false);
         totalLbl.setVisible(false);
         if (Dashboard.clientes.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "TODAVIA NO HAY CLIENTES REGISTRADOS", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No hay clientes registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         } else {
             String search = JOptionPane.showInputDialog(this, "Ingrese parametro de busqueda:");
             if (search == null || search.isEmpty() || search.isBlank()) {
@@ -352,8 +352,8 @@ public class ClientScreen extends javax.swing.JPanel {
         if (!valido) {
             JOptionPane.showMessageDialog(this, "No se agrego ningun cliente!\nDatos Invalidos o Vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
-            String nombre = entrada.substring(0 , entrada.indexOf(" "));
-            String apellido = entrada.substring(entrada.indexOf(" ")+1);
+            String nombre = entrada.substring(0, entrada.indexOf(" ") - 1);
+            String apellido = entrada.substring(entrada.indexOf(" ") + 1);
             int edad = Integer.parseInt(verificarEdad);
             String idClient = verify.generarId(nombre);
             Cliente newClient = new Cliente(nombre, apellido, idClient, edad, telefono, correo, direccion);
@@ -373,41 +373,48 @@ public class ClientScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_dirFieldActionPerformed
 
     private void borrarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarClientActionPerformed
+        nameLbl.setVisible(false);
+        nameField.setVisible(false);
+        telLbl.setVisible(false);
+        telField.setVisible(false);
+        correoLbl.setVisible(false);
+        correoField.setVisible(false);
+        edadLbl.setVisible(false);
+        edadField.setVisible(false);
+        dirLbl.setVisible(false);
+        dirField.setVisible(false);
+        registerBtn.setVisible(false);
+        jScrollPane1.setVisible(false);
+        listaClientes.setVisible(false);
         if (Dashboard.clientes.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay clientes registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         } else {
-            nameLbl.setVisible(false);
-            nameField.setVisible(false);
-            telLbl.setVisible(false);
-            telField.setVisible(false);
-            correoLbl.setVisible(false);
-            correoField.setVisible(false);
-            edadLbl.setVisible(false);
-            edadField.setVisible(false);
-            dirLbl.setVisible(false);
-            dirField.setVisible(false);
-            registerBtn.setVisible(false);
-            jScrollPane1.setVisible(false);
-            listaClientes.setVisible(false);
-            String readBorrar = JOptionPane.showInputDialog(this, "Ingrese parametro a borrar (Nombre / ID)");
-            if (readBorrar == null || readBorrar.equals("")) {
-                return;
-            }
+
+            String borrar;
+            do {
+                borrar = JOptionPane.showInputDialog("Ingrese nombre o id del Cliente a borrar:");
+                if (borrar.isEmpty() || borrar.equals(" ")) {
+                    return;
+                }
+            } while (borrar.isEmpty() || borrar.equals(" "));
+            
             boolean borrado = false;
             for (int i = 0; i < Dashboard.clientes.size(); i++) {
-                if(Dashboard.clientes.get(i).getNombre().equalsIgnoreCase(readBorrar) || Dashboard.clientes.get(i).getIdCliente().equals(readBorrar)) {
+                Cliente elimCliente = Dashboard.clientes.get(i);
+                if(elimCliente.getNombre().equalsIgnoreCase(borrar) || elimCliente.getIdCliente().equals(borrar)) {
                     Dashboard.clientes.remove(i);
                     borrado = true;
                     break;
                 }
             }
+            
             if(!borrado) {
-                JOptionPane.showMessageDialog(this, "No se encontro ningun cliente con los parametros dados", "WARNING", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontro al cliente a borrar", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Cliente borrado con exito", "EXITO", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        
+
     }//GEN-LAST:event_borrarClientActionPerformed
 
 

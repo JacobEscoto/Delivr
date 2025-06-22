@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package deliveryapp;
 
-/**
- *
- * @author djaco
- */
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 public class PedidosScreen extends javax.swing.JPanel {
 
     /**
@@ -26,21 +21,287 @@ public class PedidosScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addBtn = new javax.swing.JButton();
+        sendBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
+        listBtn = new javax.swing.JButton();
+        mapBtn = new javax.swing.JButton();
+        clientBox = new javax.swing.JComboBox<>();
+        packBox = new javax.swing.JComboBox<>();
+        repBox = new javax.swing.JComboBox<>();
+        clientLbl = new javax.swing.JLabel();
+        packLbl = new javax.swing.JLabel();
+        repLbl = new javax.swing.JLabel();
+        registerBtn = new javax.swing.JButton();
+        scrollPane = new javax.swing.JScrollPane();
+        listPedidos = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        coordX1 = new javax.swing.JTextField();
+        coordX2 = new javax.swing.JTextField();
+
         setBackground(new java.awt.Color(19, 28, 38));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(766, 488));
+        setMinimumSize(new java.awt.Dimension(766, 488));
+
+        addBtn.setBackground(new java.awt.Color(31, 114, 193));
+        addBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addBtn.setText("Agregar Pedido");
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        sendBtn.setBackground(new java.awt.Color(31, 114, 193));
+        sendBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sendBtn.setForeground(new java.awt.Color(255, 255, 255));
+        sendBtn.setText("Enviar Pedido");
+        sendBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sendBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendBtnActionPerformed(evt);
+            }
+        });
+
+        searchBtn.setBackground(new java.awt.Color(31, 114, 193));
+        searchBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        searchBtn.setForeground(new java.awt.Color(255, 255, 255));
+        searchBtn.setText("Buscar Pedido");
+        searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        listBtn.setBackground(new java.awt.Color(31, 114, 193));
+        listBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        listBtn.setForeground(new java.awt.Color(255, 255, 255));
+        listBtn.setText("Lista de Pedidos");
+        listBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBtnActionPerformed(evt);
+            }
+        });
+
+        mapBtn.setBackground(new Color(0, 0, 0, 0));
+        mapBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mapBtn.setForeground(new java.awt.Color(255, 255, 255));
+        mapBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/map2.png"))); // NOI18N
+        mapBtn.setText("Ver Mapa");
+        mapBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mapBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        mapBtn.setMaximumSize(new java.awt.Dimension(32, 32));
+        mapBtn.setMinimumSize(new java.awt.Dimension(32, 32));
+        mapBtn.setPreferredSize(new java.awt.Dimension(32, 32));
+        mapBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mapBtnActionPerformed(evt);
+            }
+        });
+
+        clientBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        packBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        repBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        clientLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        clientLbl.setForeground(new java.awt.Color(255, 255, 255));
+        clientLbl.setText("Cliente");
+
+        packLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        packLbl.setForeground(new java.awt.Color(255, 255, 255));
+        packLbl.setText("Paquete");
+
+        repLbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        repLbl.setForeground(new java.awt.Color(255, 255, 255));
+        repLbl.setText("Repartidor");
+
+        registerBtn.setBackground(new java.awt.Color(31, 114, 193));
+        registerBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        registerBtn.setForeground(new java.awt.Color(255, 255, 255));
+        registerBtn.setText("Registrar");
+        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
+            }
+        });
+
+        listPedidos.setBackground(new java.awt.Color(19, 28, 38));
+        listPedidos.setColumns(20);
+        listPedidos.setForeground(new java.awt.Color(255, 255, 255));
+        listPedidos.setRows(5);
+        listPedidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ENTREGAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        scrollPane.setViewportView(listPedidos);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Coordenada X:");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Coordenada Y:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 766, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coordX1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coordX2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(repLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clientLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(packLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(packBox, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clientBox, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(repBox, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(169, 169, 169))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sendBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(listBtn)
+                        .addGap(15, 153, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(registerBtn)
+                        .addGap(321, 321, 321))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(mapBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBtn)
+                    .addComponent(sendBtn)
+                    .addComponent(searchBtn)
+                    .addComponent(listBtn))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clientBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clientLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(packBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(packLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(repBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(repLbl))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(coordX2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(coordX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registerBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(mapBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        if(Dashboard.clientes.isEmpty() || Dashboard.repartidores.isEmpty() || Dashboard.paquetes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay Cliente/Repartidor/Paquetes registrados todavia", "WARNING", JOptionPane.WARNING_MESSAGE);
+        } else {
+            clientLbl.setVisible(true);
+            repLbl.setVisible(true);
+            packLbl.setVisible(true);
+        }
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void sendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendBtnActionPerformed
+        if(Dashboard.pedidos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pedidos registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_sendBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        if(Dashboard.pedidos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pedidos registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
+        if(Dashboard.pedidos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pedidos registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_listBtnActionPerformed
+
+    private void mapBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapBtnActionPerformed
+        String mapa = "";
+        for (int i = 0; i < Dashboard.mapa.length; i++) {
+            for (int j = 0; j < Dashboard.mapa[i].length; j++) {
+                Dashboard.mapa[i][j] = '.';
+                Dashboard.mapa[0][0] = 'R';
+                mapa += " [ "+ Dashboard.mapa[i][j] +" ] ";
+            }
+            mapa += "\n";
+        }
+        JOptionPane.showMessageDialog(this, mapa, "MAPA", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_mapBtnActionPerformed
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JComboBox<String> clientBox;
+    private javax.swing.JLabel clientLbl;
+    private javax.swing.JTextField coordX1;
+    private javax.swing.JTextField coordX2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton listBtn;
+    private javax.swing.JTextArea listPedidos;
+    private javax.swing.JButton mapBtn;
+    private javax.swing.JComboBox<String> packBox;
+    private javax.swing.JLabel packLbl;
+    private javax.swing.JButton registerBtn;
+    private javax.swing.JComboBox<String> repBox;
+    private javax.swing.JLabel repLbl;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JButton sendBtn;
     // End of variables declaration//GEN-END:variables
 }

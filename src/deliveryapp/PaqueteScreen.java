@@ -1,10 +1,12 @@
 package deliveryapp;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class PaqueteScreen extends javax.swing.JPanel {
-    
+
     Metodos mt = new Metodos();
+
     public PaqueteScreen() {
         initComponents();
         for (Cliente cliente : Dashboard.clientes) {
@@ -130,10 +132,13 @@ public class PaqueteScreen extends javax.swing.JPanel {
             }
         });
 
+        listaPackArea.setBackground(new java.awt.Color(19, 28, 38));
         listaPackArea.setColumns(20);
         listaPackArea.setRows(5);
+        listaPackArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PAQUETES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         scrollPane.setViewportView(listaPackArea);
 
+        delBtn.setBackground(new Color(0, 0, 0, 0));
         delBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/deleteBtn.png"))); // NOI18N
         delBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         delBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -230,15 +235,70 @@ public class PaqueteScreen extends javax.swing.JPanel {
         registerBtn.setVisible(true);
         scrollPane.setVisible(false);
         listaPackArea.setVisible(false);
-        
+        delBtn.setVisible(false);
+
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
+        if (Dashboard.paquetes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todavia no hay paquetes registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        } else {
+            categoryLbl.setVisible(false);
+            catBox.setVisible(false);
+            pesoLbl.setVisible(false);
+            pesoField.setVisible(false);
+            descLbl.setVisible(false);
+            descField.setVisible(false);
+            seguroCheck.setVisible(false);
+            asociadoLbl.setVisible(false);
+            asociarBox.setVisible(false);
+            registerBtn.setVisible(false);
+            scrollPane.setVisible(false);
+            listaPackArea.setVisible(false);
+            delBtn.setVisible(false);
+            String search = JOptionPane.showInputDialog(this, "Escriba dato o parametro a buscar:");
+            String resultado = "";
+            boolean borrado = false;
+            for (int i = 0; i < Dashboard.paquetes.size(); i++) {
+                Paquete searchPaquete = Dashboard.paquetes.get(i);
+                if (searchPaquete.getIdPaquete().equals(search) || searchPaquete.getCategoria().equalsIgnoreCase(search) || searchPaquete.getCliente().getNombre().equalsIgnoreCase(search)) {
+                    resultado += searchPaquete + "\n";
+                }
+            }
+            
+            if(resultado.equals("")) {
+                JOptionPane.showMessageDialog(this, "No se encontro ningun paquete con el dato proporcionado", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, resultado, "RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void listarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarBtnActionPerformed
-        // TODO add your handling code here:
+        if (Dashboard.paquetes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todavia no hay paquetes registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        } else {
+            categoryLbl.setVisible(false);
+            catBox.setVisible(false);
+            pesoLbl.setVisible(false);
+            pesoField.setVisible(false);
+            descLbl.setVisible(false);
+            descField.setVisible(false);
+            seguroCheck.setVisible(false);
+            asociadoLbl.setVisible(false);
+            asociarBox.setVisible(false);
+            registerBtn.setVisible(false);
+            String resultado = "";
+            for (int i = 0; i < Dashboard.paquetes.size(); i++) {
+                Paquete paquete = Dashboard.paquetes.get(i);
+                resultado += (i + 1) + ") ID: " + paquete.getIdPaquete() + " | Categoria: " + paquete.getCategoria() + " | Peso: " + paquete.getPeso() + "| Seguro: " + paquete.getIncluirSeguro() + "\n";
+            }
+            listaPackArea.setText(resultado);
+            listaPackArea.setEditable(false);
+            scrollPane.setVisible(true);
+            listaPackArea.setVisible(true);
+            delBtn.setVisible(true);
+        }
     }//GEN-LAST:event_listarBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
@@ -264,24 +324,24 @@ public class PaqueteScreen extends javax.swing.JPanel {
         }
         String clienteAsociado = asociarBox.getSelectedItem().toString();
         String idSocio = "";
-        if(clienteAsociado.equals("") || clienteAsociado.isEmpty() || clienteAsociado.isBlank()) {
+        if (clienteAsociado.equals("") || clienteAsociado.isEmpty() || clienteAsociado.isBlank()) {
             validado = false;
             JOptionPane.showMessageDialog(this, "No seleccionaste ningun cliente asociado al paquete", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         } else {
-            idSocio = clienteAsociado.substring(clienteAsociado.indexOf("ID:")+4);
+            idSocio = clienteAsociado.substring(clienteAsociado.indexOf("ID:") + 4);
         }
-        
+
         Cliente socio = null;
         if (validado) {
-           for (int i = 0; i < Dashboard.clientes.size(); i++) {
-                if(Dashboard.clientes.get(i).getIdCliente().equals(idSocio)) {
+            for (int i = 0; i < Dashboard.clientes.size(); i++) {
+                if (Dashboard.clientes.get(i).getIdCliente().equals(idSocio)) {
                     socio = Dashboard.clientes.get(i);
                     break;
                 }
-            } 
+            }
         }
-        
-        if(!validado) {
+
+        if (!validado) {
             JOptionPane.showMessageDialog(this, "No se pudo agregar el paquete", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             Paquete paquete = new Paquete(idPaquete, categoria, peso, descripcion, incluirSeguro, socio);
@@ -291,11 +351,26 @@ public class PaqueteScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private void asociarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asociarBoxActionPerformed
-        
+
     }//GEN-LAST:event_asociarBoxActionPerformed
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
-        
+        boolean borrado = false;
+        String borrar = JOptionPane.showInputDialog(this, "Escriba ID del paquete a borrar:");
+        for (int i = 0; i < Dashboard.paquetes.size(); i++) {
+            Paquete elimPaquete = Dashboard.paquetes.get(i);
+            if (elimPaquete.getIdPaquete().equals(borrar)) {
+                Dashboard.paquetes.remove(i);
+                borrado = true;
+                break;
+            }
+        }
+
+        if (!borrado) {
+            JOptionPane.showMessageDialog(this, "No se encontro ningun paquete con el ID proporcionado", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Paquete eliminado con exito", "BORRADO", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_delBtnActionPerformed
 
 

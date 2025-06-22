@@ -10,12 +10,12 @@ public class Pedido {
     private String estado;
     
     // Constructor
-    public Pedido(String idPedido, Cliente cliente, Paquete paquete, Repartidor repartidor, String estado) {
+    public Pedido(String idPedido, Cliente cliente, Paquete paquete, Repartidor repartidor) {
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.paquete = paquete;
         this.repartidor = repartidor;
-        this.estado = estado;
+        this.estado = "Pendiente";
     }
     
     // Getters y Setters

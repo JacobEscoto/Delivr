@@ -10,6 +10,10 @@ public class Metodos {
         if (nombre.isEmpty() || nombre.isBlank()) {
             validado = false;
         }
+        if (nombre.indexOf(" ") == -1) {
+            validado = false;
+        }
+        
         if (edad.isEmpty() || edad.isBlank()) {
             validado = false;
         } else {

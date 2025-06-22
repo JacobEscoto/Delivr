@@ -10,10 +10,11 @@ public class Main {
     public static void main() {
         
         Scanner read = new Scanner(System.in);
-        
+        ArrayList<Cliente> clientes = new ArrayList();
         ArrayList<Repartidor> repartidores = new ArrayList();
         ArrayList<Paquete> paquetes = new ArrayList();
         ArrayList<Pedido> pedidos = new ArrayList();
+        char[][] mapa = new char[15][15];
         int opcion, accion;
 
         // Menu Principal
