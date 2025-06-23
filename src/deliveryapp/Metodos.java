@@ -71,6 +71,8 @@ public class Metodos {
             int x = rand.nextInt(caracteres.length());
             char c = caracteres.charAt(x);
             id += c;
+            // Impresion en consola como se va generando aleatoriamente el ID:
+            System.out.printf("%s%n", id);
         }
 
         return id;
@@ -127,9 +129,11 @@ public class Metodos {
         
         if (precio >= 500) {
             total = costoTotal(precio * 0.80, peso, edad, incluirSeguro);
+            System.out.printf("$.2f Lps:", total);
             return total;
         }
-        
+        System.out.printf("Formato de costo Total con 2 decimales -> Lps %.2f%n ", total);
+        System.out.print("Formato mostrando todos los decimales: "  + total);
         return total;
     }
     

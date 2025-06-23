@@ -100,6 +100,7 @@ public class Paquete {
         System.out.println(largo);
         System.out.println(ancho);
         System.out.println(alto);
+        System.out.println("Peso Volumetrico: " + (largo * ancho * alto)/6000);
         return (largo * ancho * alto) / 6000;
     }
     

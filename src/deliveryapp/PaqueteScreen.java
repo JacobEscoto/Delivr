@@ -308,6 +308,8 @@ public class PaqueteScreen extends javax.swing.JPanel {
         String categoria = catBox.getSelectedItem().toString();
         if (categoria.equals("")) {
             validado = false;
+            JOptionPane.showMessageDialog(this, "Seleccione una categoria", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         String entradaPeso = pesoField.getText();
         double peso = 0;

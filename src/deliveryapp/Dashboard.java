@@ -20,6 +20,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     public Dashboard() {
         initComponents();
+        ImageIcon icon = new ImageIcon("src/Images/package.png");
+        setIconImage(icon.getImage());
         SetImageLabel(iconDelivr, "src/Images/deliveryIcon.png");
         this.setLocationRelativeTo(this);
         clientesBtn.setContentAreaFilled(false);

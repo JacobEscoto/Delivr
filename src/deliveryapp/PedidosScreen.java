@@ -414,9 +414,6 @@ public class PedidosScreen extends javax.swing.JPanel {
        int y = Integer.parseInt(coordYField.getText());
         for (int i = 0; i < Dashboard.mapa.length; i++) {
             for (int j = 0; j < Dashboard.mapa[i].length; j++) {
-                Dashboard.mapa[i][j] = ' ';
-                Dashboard.mapa[0][0] = 'R';
-                Dashboard.mapa[x][y] = 'C';
                 mapa += " [ " + Dashboard.mapa[i][j] + " ] ";
             }
             mapa += "\n";
@@ -426,7 +423,7 @@ public class PedidosScreen extends javax.swing.JPanel {
 
     private void enviarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarBtnActionPerformed
         mapBtn.setVisible(true);
-        int x, y;
+        int x = 0, y = 0;
         boolean enviado = true;
         Pedido pedido = null;
         String coordX = coordXField.getText();
@@ -471,9 +468,10 @@ public class PedidosScreen extends javax.swing.JPanel {
         if(!enviado) {
             JOptionPane.showMessageDialog(this, "No se puede enviar el pedido", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
-            pedido.entregarPedido();
+            Dashboard.mapa = pedido.entregarPedido(Dashboard.mapa, x, y);
             String factura = factura(pedido);
             JOptionPane.showMessageDialog(this, factura, "ENVIADO", JOptionPane.PLAIN_MESSAGE);
+            Dashboard.pedidos.remove(pedido);
             for (Pedido actualizar: Dashboard.pedidos) {
                 if (actualizar.getEstado().equalsIgnoreCase("pendiente")) {
                     pedidoBox.addItem(pedido.toString());

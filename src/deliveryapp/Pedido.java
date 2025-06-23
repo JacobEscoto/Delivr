@@ -1,5 +1,8 @@
 package deliveryapp;
 
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 public class Pedido {
     
     // Atributos
@@ -60,8 +63,53 @@ public class Pedido {
     }
     
     // Metodos
-    public void entregarPedido() {
+    public char[][] entregarPedido(char[][] mapa, int coordX, int coordY) {
+        Random rand = new Random();
         this.estado = "En camino";
+        
+        boolean entregado = false;
+        int x = rand.nextInt(0, 15);
+        int y = rand.nextInt(0, 15);
+        mapa[x][y] = 'R';
+        while (x != coordX || y != coordY) {
+            mapa[x][y] = '=';
+            if(x<coordX) {
+                x++;
+            } else if (x > coordX) {
+                x--;
+            } else if (y < coordY) {
+                y++;
+            } else if (y > coordY) {
+                y--; 
+            }
+            if (x == coordX && y == coordY) {
+                entregado = true;
+                break;
+            }
+            String movimiento = "";
+            for (int i = 0; i < mapa.length; i++) {
+                for (int j = 0; j < mapa[i].length; j++) {
+                    if (i == x && j == y) {
+                        movimiento += "[R]";
+                    } else if (i == coordX && j == coordX) {
+                        movimiento += "[C]";
+                    } else {
+                        movimiento += "[ " + mapa[i][j] + " ]";
+                    }
+                }
+                movimiento += "\n";
+            }
+            
+            JOptionPane.showMessageDialog(null, movimiento);
+        }
+        
+        mapa[x][y] = 'R';
+        if (entregado) {
+            JOptionPane.showMessageDialog(null, "Pedido entregado!");
+            this.estado = "Entregado";
+        }
+        
+        return mapa;
     }
     
     @Override

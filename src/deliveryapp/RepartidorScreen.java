@@ -284,9 +284,13 @@ public class RepartidorScreen extends javax.swing.JPanel {
             for (int i = 0; i < Dashboard.repartidores.size(); i++) {
                 Repartidor repartidorBorrar = Dashboard.repartidores.get(i);
                 if (repartidorBorrar.getNombre().equalsIgnoreCase(borrarR) || repartidorBorrar.getIdRepartidor().equals(borrarR)) {
-                    Dashboard.repartidores.remove(repartidorBorrar);
-                    borrado = true;
-                    break;
+                    int confirmacion = JOptionPane.showConfirmDialog(this, "Deseas eliminar el repartidor?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
+                    if (confirmacion == JOptionPane.YES_OPTION) {
+                        Dashboard.repartidores.remove(i);
+                        borrado = true;
+                        break;
+                    }
+                    
                 }
             }
             
