@@ -304,7 +304,7 @@ public class PaqueteScreen extends javax.swing.JPanel {
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         boolean validado = true;
-        String idPaquete = mt.generarId("");
+        String idPaquete = mt.generarId();
         String categoria = catBox.getSelectedItem().toString();
         if (categoria.equals("")) {
             validado = false;

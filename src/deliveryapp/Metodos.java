@@ -78,6 +78,11 @@ public class Metodos {
         return id;
     }
     
+    // Sobrecarga del metodo generarId
+    public String generarId() {
+        return generarId("");
+    }
+    
     public boolean esDouble(String numero) {
         boolean valido = true;
         if (numero.isEmpty()) {
@@ -129,7 +134,7 @@ public class Metodos {
         
         if (precio >= 500) {
             total = costoTotal(precio * 0.80, peso, edad, incluirSeguro);
-            System.out.printf("$.2f Lps:", total);
+            System.out.printf("%.2f Lps:", total);
             return total;
         }
         System.out.printf("Formato de costo Total con 2 decimales -> Lps %.2f%n ", total);

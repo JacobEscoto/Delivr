@@ -527,7 +527,7 @@ public class PedidosScreen extends javax.swing.JPanel {
         if (!registrado) {
             JOptionPane.showMessageDialog(this, "No se pudo registrar el pedido", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
-            String idPedido = mt.generarId("");
+            String idPedido = mt.generarId();
             double pesoCaja = paquete.pesoCaja(paquete.getCategoria());
             double subTotal = 0;
             if (pesoCaja > paquete.getPeso()) {
