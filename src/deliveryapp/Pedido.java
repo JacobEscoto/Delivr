@@ -77,7 +77,9 @@ public class Pedido {
                 x++;
             } else if (x > coordX) {
                 x--;
-            } else if (y < coordY) {
+            } 
+            
+            if (y < coordY) {
                 y++;
             } else if (y > coordY) {
                 y--; 
@@ -91,7 +93,7 @@ public class Pedido {
                 for (int j = 0; j < mapa[i].length; j++) {
                     if (i == x && j == y) {
                         movimiento += "[R]";
-                    } else if (i == coordX && j == coordX) {
+                    } else if (i == coordX && j == coordY) {
                         movimiento += "[C]";
                     } else {
                         movimiento += "[ " + mapa[i][j] + " ]";

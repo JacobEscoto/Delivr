@@ -44,7 +44,12 @@ public class Paquete {
     }
 
     public void setPeso(double peso) {
-        this.peso = peso;
+        if (peso > 0) {
+            this.peso = peso;
+        } else {
+            System.out.print("Peso es invalido!");
+        }
+        
     }
 
     public String getDescripcion() {
@@ -92,7 +97,7 @@ public class Paquete {
             alto =  rand.nextInt(30, 81);
         } else if (categoria.equalsIgnoreCase("fragil")) {
             largo = rand.nextInt(10, 31);
-            ancho = rand.nextInt(10, 3);
+            ancho = rand.nextInt(10, 31);
             alto = rand.nextInt(10, 31);
         }
         

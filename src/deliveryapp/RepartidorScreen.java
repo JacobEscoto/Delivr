@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package deliveryapp;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author djaco
- */
 public class RepartidorScreen extends javax.swing.JPanel {
 
     Metodos generar = new Metodos();
@@ -279,11 +271,11 @@ public class RepartidorScreen extends javax.swing.JPanel {
         if (Dashboard.repartidores.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay repartidores registrados", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         } else {
-            String borrarR = JOptionPane.showInputDialog(this, "Ingrese dato del repartidor a borrar");
+            String borrarR = JOptionPane.showInputDialog(this, "Ingrese ID del repartidor a borrar");
             boolean borrado = false;
             for (int i = 0; i < Dashboard.repartidores.size(); i++) {
                 Repartidor repartidorBorrar = Dashboard.repartidores.get(i);
-                if (repartidorBorrar.getNombre().equalsIgnoreCase(borrarR) || repartidorBorrar.getIdRepartidor().equals(borrarR)) {
+                if (repartidorBorrar.getIdRepartidor().equals(borrarR)) {
                     int confirmacion = JOptionPane.showConfirmDialog(this, "Deseas eliminar el repartidor?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
                     if (confirmacion == JOptionPane.YES_OPTION) {
                         Dashboard.repartidores.remove(i);

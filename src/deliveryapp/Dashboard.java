@@ -22,24 +22,29 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         ImageIcon icon = new ImageIcon("src/Images/package.png");
         setIconImage(icon.getImage());
-        SetImageLabel(iconDelivr, "src/Images/deliveryIcon.png");
+        setImageLabel(iconDelivr, "src/Images/deliveryIcon.png");
         this.setLocationRelativeTo(this);
-        clientesBtn.setContentAreaFilled(false);
-        clientesBtn.setBorderPainted(false);
-        clientesBtn.setFocusPainted(false);
-        clientesBtn.setOpaque(false);
-        repartidorBtn.setContentAreaFilled(false);
-        repartidorBtn.setBorderPainted(false);
-        repartidorBtn.setFocusPainted(false);
-        repartidorBtn.setOpaque(false);
-        paquetesBtn.setContentAreaFilled(false);
-        paquetesBtn.setBorderPainted(false);
-        paquetesBtn.setFocusPainted(false);
-        paquetesBtn.setOpaque(false);
-        pedidosBtn.setContentAreaFilled(false);
-        pedidosBtn.setBorderPainted(false);
-        pedidosBtn.setFocusPainted(false);
-        pedidosBtn.setOpaque(false);
+        configBtn(clientesBtn);
+        configBtn(repartidorBtn);
+        configBtn(paquetesBtn);
+        configBtn(pedidosBtn);
+        
+    }
+    
+    private void configBtn(javax.swing.JButton boton) {
+        boton.setContentAreaFilled(false);
+        boton.setBorderPainted(false);
+        boton.setFocusPainted(false);
+        boton.setOpaque(false);
+    }
+    
+    private void setScreen(javax.swing.JPanel panel) {
+        panel.setSize(766, 488);
+        panel.setLocation(0, 0);
+        content.removeAll();
+        content.add(panel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -178,47 +183,19 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clientesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesBtnActionPerformed
-        ClientScreen screenC = new ClientScreen();
-        screenC.setSize(766, 488);
-        screenC.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(screenC, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        setScreen(new ClientScreen());
     }//GEN-LAST:event_clientesBtnActionPerformed
 
     private void repartidorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repartidorBtnActionPerformed
-        RepartidorScreen screenR = new RepartidorScreen();
-        screenR.setSize(766, 488);
-        screenR.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(screenR, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        setScreen(new RepartidorScreen());
     }//GEN-LAST:event_repartidorBtnActionPerformed
 
     private void paquetesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paquetesBtnActionPerformed
-        PaqueteScreen screenPack = new PaqueteScreen();
-        screenPack.setSize(766, 488);
-        screenPack.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(screenPack, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        setScreen(new PaqueteScreen());
     }//GEN-LAST:event_paquetesBtnActionPerformed
 
     private void pedidosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosBtnActionPerformed
-        PedidosScreen screenOrders = new PedidosScreen();
-        screenOrders.setSize(766, 488);
-        screenOrders.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(screenOrders, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        setScreen(new PedidosScreen());
     }//GEN-LAST:event_pedidosBtnActionPerformed
 
     public static void main(String args[]) {
@@ -253,7 +230,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
     }
     
-    private void SetImageLabel(JLabel labelName, String root) {
+    private void setImageLabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
         labelName.setIcon(icon);

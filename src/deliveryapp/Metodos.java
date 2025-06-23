@@ -103,40 +103,31 @@ public class Metodos {
     }
     
     public double subTotal(double peso) {
-        if (peso <= 20) {
+        if (peso <= 15) {
             return 100 + (peso * 5);
         } else {
-            return 150 + (peso - 10) * 15;
+            return 150 + (peso - 15) * 15;
         }
     }
     
     // Metodo recursivo - Calcular costo total
-    
     public double costoTotal(double precio, double peso, int edad, boolean incluirSeguro) {
         double total = precio;
         
-        if (edad < 65 && peso < 40 && precio < 500) {
-            if (incluirSeguro) {
-                total += 65;
-            }
-            return total;
+        if (edad < 65 && peso < 40 && precio < 500 && incluirSeguro) {
+            total += 65;
         }
         
         if (edad >= 65) {
             total = costoTotal(precio * 0.40, peso, 0, incluirSeguro);
-            return total;
-        }
-        
-        if (peso >= 40) {
+        } else if (peso >= 40) {
             total = costoTotal(precio * 0.90, 0, edad, incluirSeguro);
-            return total;
+            
+        } else if (precio >= 500) {
+            total = costoTotal(precio * 0.85, peso, edad, incluirSeguro);
         }
         
-        if (precio >= 500) {
-            total = costoTotal(precio * 0.85, peso, edad, incluirSeguro);
-            System.out.printf("%.2f Lps:", total);
-            return total;
-        }
+        System.out.printf("%.2f Lps:", total);
         return total;
     }
     
