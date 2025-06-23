@@ -358,22 +358,26 @@ public class PaqueteScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_asociarBoxActionPerformed
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
-        boolean borrado = false;
         String borrar = JOptionPane.showInputDialog(this, "Escriba ID del paquete a borrar:");
-        for (int i = 0; i < Dashboard.paquetes.size(); i++) {
-            Paquete elimPaquete = Dashboard.paquetes.get(i);
-            if (elimPaquete.getIdPaquete().equals(borrar)) {
-                Dashboard.paquetes.remove(i);
-                borrado = true;
-                break;
+        boolean borrado = false;
+            for (int i = 0; i < Dashboard.paquetes.size(); i++) {
+                Paquete delPaquete = Dashboard.paquetes.get(i);
+                if (delPaquete.getIdPaquete().equals(borrar)) {
+                    int confirmacion = JOptionPane.showConfirmDialog(this, "Deseas eliminar el paquete?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
+                    if (confirmacion == JOptionPane.YES_OPTION) {
+                        Dashboard.repartidores.remove(i);
+                        borrado = true;
+                        break;
+                    }
+                    
+                }
             }
-        }
-
-        if (!borrado) {
-            JOptionPane.showMessageDialog(this, "No se encontro ningun paquete con el ID proporcionado", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Paquete eliminado con exito", "BORRADO", JOptionPane.INFORMATION_MESSAGE);
-        }
+            
+            if (!borrado) {
+                JOptionPane.showMessageDialog(this, "No se elimino el paquete correctamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Se borro el paquete con exito", "EXITO", JOptionPane.INFORMATION_MESSAGE);
+            }
     }//GEN-LAST:event_delBtnActionPerformed
 
 

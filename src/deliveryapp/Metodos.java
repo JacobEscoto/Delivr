@@ -128,17 +128,15 @@ public class Metodos {
         }
         
         if (peso >= 40) {
-            total = costoTotal(precio * 0.70, 0, edad, incluirSeguro);
+            total = costoTotal(precio * 0.90, 0, edad, incluirSeguro);
             return total;
         }
         
         if (precio >= 500) {
-            total = costoTotal(precio * 0.80, peso, edad, incluirSeguro);
+            total = costoTotal(precio * 0.85, peso, edad, incluirSeguro);
             System.out.printf("%.2f Lps:", total);
             return total;
         }
-        System.out.printf("Formato de costo Total con 2 decimales -> Lps %.2f%n ", total);
-        System.out.print("Formato mostrando todos los decimales: "  + total);
         return total;
     }
     

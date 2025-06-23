@@ -406,14 +406,17 @@ public class ClientScreen extends javax.swing.JPanel {
 
             boolean borrado = false;
             for (int i = 0; i < Dashboard.clientes.size(); i++) {
-                Cliente elimCliente = Dashboard.clientes.get(i);
-                if (elimCliente.getNombre().equalsIgnoreCase(borrar) || elimCliente.getIdCliente().equals(borrar)) {
-                    Dashboard.clientes.remove(i);
-                    borrado = true;
-                    break;
+                Cliente borrarCliente = Dashboard.clientes.get(i);
+                if (borrarCliente.getNombre().equalsIgnoreCase(borrar) || borrarCliente.getIdCliente().equals(borrar)) {
+                    int confirmacion = JOptionPane.showConfirmDialog(this, "Deseas eliminar el cliente?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
+                    if (confirmacion == JOptionPane.YES_OPTION) {
+                        Dashboard.repartidores.remove(i);
+                        borrado = true;
+                        break;
+                    }
+                    
                 }
             }
-
             if (!borrado) {
                 JOptionPane.showMessageDialog(this, "No se encontro al cliente a borrar", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
