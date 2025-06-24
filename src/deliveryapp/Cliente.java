@@ -85,21 +85,6 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public boolean verificarId(ArrayList<Cliente> clientes, String idCliente) {
-
-        boolean idIguales = false;
-
-        for (int i = 0; i < clientes.size(); i++) {
-            String id1 = clientes.get(i).getIdCliente();
-
-            if (idCliente.equals(id1)) {
-                idIguales = true;
-                break;
-            }
-        }
-        return idIguales;
-    }
-
     @Override
     public String toString() {
         return "Nombre: " + nombre + " " + apellido +" | ID: " + idCliente + " | Edad: " + edad + " | Correo: " + correo + " | Tel: " + telefono;
